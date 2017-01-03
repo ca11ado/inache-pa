@@ -104,6 +104,14 @@
       }
     },
     "rules": {
+			"no-tabs": 0,
+			"space-before-function-paren": [
+				1, {
+					"anonymous": "always",
+					"named": "always",
+					"asyncArrow": "always"
+				}
+			],
       "arrow-parens": [
         "error",
         "always"
@@ -113,8 +121,8 @@
         "as-needed"
       ],
       "comma-dangle": [
-        2,
-        "always-multiline"
+        1,
+        "never"
       ],
       "import/imports-first": 0,
       "import/newline-after-import": 0,
