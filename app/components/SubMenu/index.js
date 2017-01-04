@@ -8,15 +8,16 @@ const Wrapper = styled.div`
   border: 1px solid rgba(0,0,0,0.2);
 `;
 
-const Item = styled.div`
+export const Item = styled.div`
   cursor: pointer;
 `;
 
 function SubMenu(props) {
   const content = _.isEmpty(props.items)
-    ? (<div></div>)
+    ? (<div className="gb-emptyDiv"></div>)
     : _.map(props.items, (item, index) => (
       <Item
+        className="gb-item"
         key={`sub-menu-${index}`}
       >
         {item.title}
@@ -35,3 +36,4 @@ SubMenu.propTypes = {
 };
 
 export default SubMenu;
+
