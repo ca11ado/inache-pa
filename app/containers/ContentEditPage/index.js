@@ -6,6 +6,10 @@ import SubMenu from '../../components/SubMenu';
 
 export class ContentEditPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
+    function clickAction (e) {
+      console.log('click on sub-menu item', e.currentTarget.dataset['name']);
+    }
+
     return (
       <div>
         <Helmet
@@ -15,7 +19,7 @@ export class ContentEditPage extends React.PureComponent { // eslint-disable-lin
           ]}
         />
         <section>
-          <SubMenu items={this.props.sections} />
+          <SubMenu clickAction={clickAction} items={this.props.sections} />
         </section>
         <section>А здесь будет выводиться сам контент</section>
       </div>

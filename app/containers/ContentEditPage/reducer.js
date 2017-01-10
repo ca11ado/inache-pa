@@ -13,7 +13,7 @@ export const initialState = fromJS({
   sections: [
     { title: 'Новости', api: 'news' },
     { title: 'Афиша', api: 'tours' },
-    { title: 'Видео', api: 'tours', noActive: true },
+    { title: 'Видео', api: 'video', noActive: true },
     { title: 'Фото', api: 'gallery' },
     { title: 'Музыка', api: 'music' }
   ]

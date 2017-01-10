@@ -13,12 +13,15 @@ export const Item = styled.div`
 `;
 
 function SubMenu(props) {
+
   const content = _.isEmpty(props.items)
     ? (<div className="gb-emptyDiv"></div>)
     : _.map(props.items, (item, index) => (
       <Item
         className="gb-item"
         key={`sub-menu-${index}`}
+        data-name={item.api}
+        onClick={props.clickAction}
       >
         {item.title}
       </Item>
