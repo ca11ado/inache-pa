@@ -3,11 +3,17 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { selectSections } from './selectors';
 import SubMenu from '../../components/SubMenu';
+import { SELECT_MENU } from './constants';
 
 export class ContentEditPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
-    function clickAction (e) {
-      console.log('click on sub-menu item', e.currentTarget.dataset['name']);
+    function clickAction (dispatch) {
+      return (e) => {
+        dispatch({
+          type: SELECT_MENU,
+          menu: e.currentTarget.dataset['name']
+        });
+      }
     }
 
     return (
@@ -19,7 +25,7 @@ export class ContentEditPage extends React.PureComponent { // eslint-disable-lin
           ]}
         />
         <section>
-          <SubMenu clickAction={clickAction} items={this.props.sections} />
+          <SubMenu clickAction={clickAction(this.props.dispatch)} items={this.props.sections} />
         </section>
         <section>А здесь будет выводиться сам контент</section>
       </div>

@@ -11,7 +11,9 @@ const selectContentEditPageDomain = () => (state) => state.get('contentEditPage'
 const selectSections = () => createSelector(
   selectContentEditPageDomain(),
   (contentState) => contentState.get('sections'),
-  (sections) => sections.toJS()
+  (sections) => {
+    return sections.toJS()
+  }
 );
 
 
