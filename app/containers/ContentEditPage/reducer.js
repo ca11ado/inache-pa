@@ -6,11 +6,11 @@
 
 import { fromJS } from 'immutable';
 import {
-  DEFAULT_ACTION,
   SELECT_MENU
 } from './constants';
 
 export const initialState = fromJS({
+  isLoaded: false,
   sections: [
     { title: 'Новости', api: 'news', isActive: false },
     { title: 'Афиша', api: 'tours', isActive: false },
@@ -22,7 +22,7 @@ export const initialState = fromJS({
 
 function contentEditPageReducer(state = initialState, action) {
   switch (action.type) {
-    case SELECT_MENU:
+    case SELECT_MENU: {
       const sections = initialState
         .get('sections')
         .update(
@@ -32,8 +32,10 @@ function contentEditPageReducer(state = initialState, action) {
           (item) => item.set('isActive', true)
         );
       return state.set('sections', sections);
-    default:
+    }
+    default: {
       return state;
+    }
   }
 }
 

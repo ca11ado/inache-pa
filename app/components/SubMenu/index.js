@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import _ from 'lodash';
 import styled from 'styled-components';
 
-const isActive = true;
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
@@ -17,7 +16,6 @@ export const ActiveItem = styled(Item)`
 `;
 
 function SubMenu(props) {
-
   const content = _.isEmpty(props.items)
     ? (<div className="gb-emptyDiv"></div>)
     : _.map(props.items, (item, index) => {
@@ -30,13 +28,13 @@ function SubMenu(props) {
 
       if (!item.isActive) {
         return (
-          <Item { ...itemProps }>
+          <Item {...itemProps}>
             {item.title}
           </Item>
         );
       }
       return (
-        <ActiveItem { ...itemProps }>
+        <ActiveItem {...itemProps}>
           {item.title}
         </ActiveItem>
       );
@@ -50,7 +48,8 @@ function SubMenu(props) {
 }
 
 SubMenu.propTypes = {
-  items: PropTypes.array
+  items: PropTypes.array,
+  clickAction: PropTypes.func
 };
 
 export default SubMenu;
