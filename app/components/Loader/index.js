@@ -12,30 +12,50 @@ export const Wrapper = styled.div`
 
 export const makeBigger = keyframes`
   from {
-    width: 100px;
-    height: 100px;
+    transform: scale(1) rotate(90deg)
   }
   50% {
-    width: 150px;
-    height: 150px;
+    transform: scale(2) rotate(180deg);
   }
   to {
-    width: 100px;
-    height: 100px;
+    transform: scale(1) rotate(270deg);
   }
 `;
 
-export const LoaderItem = styled.div`
+export const Rect = styled.div`
+  border: 1px solid red;
+  animation: ${makeBigger} 2s ease infinite;
+`;
+
+export const VerySmallRect = styled(Rect)`
+  width: 10px;
+  height: 10px;
+`;
+
+export const SmallRect = styled(Rect)`
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const MediumRect = styled(Rect)`
   width: 100px;
   height: 100px;
-  border: 1px solid red;
-  animation: ${makeBigger} 2s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 function Loader () {
   return (
     <Wrapper>
-      <LoaderItem />
+      <MediumRect>
+        <SmallRect>
+          <VerySmallRect />
+        </SmallRect>
+      </MediumRect>
     </Wrapper>
   );
 }
