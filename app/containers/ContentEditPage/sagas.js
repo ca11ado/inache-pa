@@ -1,11 +1,16 @@
-// import { take, call, put, select } from 'redux-saga/effects';
+import { takeEvery } from 'redux-saga';
+import { put } from 'redux-saga/effects';
+import { SELECT_MENU, START_LOADER } from './constants';
 
-// Individual exports for testing
-export function* defaultSaga() {
-  return;
+export function* selectMenuWatcherSaga() {
+  yield takeEvery(SELECT_MENU, startLoader);
+}
+
+export function* startLoader () {
+  yield put({ type: START_LOADER });
 }
 
 // All sagas to be loaded
 export default [
-  defaultSaga,
+  selectMenuWatcherSaga
 ];

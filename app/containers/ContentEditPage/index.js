@@ -19,9 +19,7 @@ export class ContentEditPage extends React.PureComponent { // eslint-disable-lin
 
     const content = this.props.isLoaded
       ? (<Loader />)
-      : (
-        <div>Some content</div>
-      );
+      : (<div>Some content</div>);
 
     return (
       <div>
