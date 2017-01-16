@@ -17,7 +17,7 @@ export const LoaderWrapper = styled.div`
 `;
 
 export class ComponentsList extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  render() {
+  render () {
     return (
       <div>
         <LoaderWrapper>
@@ -34,9 +34,9 @@ export class ComponentsList extends React.PureComponent { // eslint-disable-line
 }
 
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
-    dispatch,
+    dispatch
   };
 }
 

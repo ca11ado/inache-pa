@@ -15,7 +15,7 @@ export const ActiveItem = styled(Item)`
   color: red;
 `;
 
-function SubMenu(props) {
+function SubMenu (props) {
   const content = _.isEmpty(props.items)
     ? (<div className="gb-emptyDiv"></div>)
     : _.map(props.items, (item, index) => {

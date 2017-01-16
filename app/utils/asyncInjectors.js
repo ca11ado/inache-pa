@@ -6,14 +6,14 @@ import createReducer from 'reducers';
 /**
  * Validate the shape of redux store
  */
-export function checkStore(store) {
+export function checkStore (store) {
   const shape = {
     dispatch: isFunction,
     subscribe: isFunction,
     getState: isFunction,
     replaceReducer: isFunction,
     runSaga: isFunction,
-    asyncReducers: isObject,
+    asyncReducers: isObject
   };
   invariant(
     conformsTo(store, shape),
@@ -24,8 +24,8 @@ export function checkStore(store) {
 /**
  * Inject an asynchronously loaded reducer
  */
-export function injectAsyncReducer(store, isValid) {
-  return function injectReducer(name, asyncReducer) {
+export function injectAsyncReducer (store, isValid) {
+  return function injectReducer (name, asyncReducer) {
     if (!isValid) checkStore(store);
 
     invariant(
@@ -43,8 +43,8 @@ export function injectAsyncReducer(store, isValid) {
 /**
  * Inject an asynchronously loaded saga
  */
-export function injectAsyncSagas(store, isValid) {
-  return function injectSagas(sagas) {
+export function injectAsyncSagas (store, isValid) {
+  return function injectSagas (sagas) {
     if (!isValid) checkStore(store);
 
     invariant(
@@ -64,11 +64,11 @@ export function injectAsyncSagas(store, isValid) {
 /**
  * Helper for creating injectors
  */
-export function getAsyncInjectors(store) {
+export function getAsyncInjectors (store) {
   checkStore(store);
 
   return {
     injectReducer: injectAsyncReducer(store, true),
-    injectSagas: injectAsyncSagas(store, true),
+    injectSagas: injectAsyncSagas(store, true)
   };
 }

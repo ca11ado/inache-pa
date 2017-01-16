@@ -22,7 +22,7 @@ export const initialState = fromJS({
   ]
 });
 
-function contentEditPageReducer(state = initialState, action) {
+function contentEditPageReducer (state = initialState, action) {
   switch (action.type) {
     case SELECT_MENU: {
       const sections = initialState

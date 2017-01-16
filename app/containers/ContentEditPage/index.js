@@ -7,7 +7,7 @@ import { SELECT_MENU } from './constants';
 import Loader from '../../components/Loader2';
 
 export class ContentEditPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  render() {
+  render () {
     function clickAction (dispatch) {
       return (e) => {
         dispatch({
@@ -26,7 +26,7 @@ export class ContentEditPage extends React.PureComponent { // eslint-disable-lin
         <Helmet
           title="Content Edit"
           meta={[
-            { name: 'description', content: 'Description of ContentEditPage' },
+            { name: 'description', content: 'Description of ContentEditPage' }
           ]}
         />
         <section>
@@ -48,7 +48,7 @@ ContentEditPage.propTypes = {
 
 const mapStateToProps = selectSections();
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
     dispatch
   };

@@ -40,7 +40,7 @@ const store = configureStore(initialState, browserHistory);
 // must be provided for resolving how to retrieve the "route" in the state
 import { selectLocationState } from 'containers/App/selectors';
 const history = syncHistoryWithStore(browserHistory, store, {
-  selectLocationState: selectLocationState(),
+  selectLocationState: selectLocationState()
 });
 
 // Set up the router, wrapping all Routes in the App component
@@ -48,7 +48,7 @@ import App from 'containers/App';
 import createRoutes from './routes';
 const rootRoute = {
   component: App,
-  childRoutes: createRoutes(store),
+  childRoutes: createRoutes(store)
 };
 
 
@@ -87,7 +87,7 @@ if (!window.Intl) {
     resolve(System.import('intl'));
   }))
     .then(() => Promise.all([
-      System.import('intl/locale-data/jsonp/de.js'),
+      System.import('intl/locale-data/jsonp/de.js')
     ]))
     .then(() => render(translationMessages))
     .catch((err) => {

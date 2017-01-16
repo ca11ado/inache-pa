@@ -121,7 +121,7 @@
         "as-needed"
       ],
       "comma-dangle": [
-        1,
+        2,
         "never"
       ],
       "import/imports-first": 0,

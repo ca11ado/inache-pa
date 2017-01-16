@@ -43,7 +43,7 @@ export const RightRectangle = styled(Rectangle)`
   animation: ${changeSize} 1s ease-out .5s infinite;
 `;
 
-function Loader2() {
+function Loader2 () {
   return (
     <Wrapper>
       <LeftRectangle />

@@ -11,7 +11,7 @@ import { fromJS } from 'immutable';
 import {
   injectAsyncReducer,
   injectAsyncSagas,
-  getAsyncInjectors,
+  getAsyncInjectors
 } from 'utils/asyncInjectors';
 
 // Fixtures
@@ -27,12 +27,12 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-function* testSaga() {
+function* testSaga () {
   yield put({ type: 'TEST', payload: 'yup' });
 }
 
 const sagas = [
-  testSaga,
+  testSaga
 ];
 
 describe('asyncInjectors', () => {

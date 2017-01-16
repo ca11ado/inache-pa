@@ -12,7 +12,7 @@ const loadModule = (cb) => (componentModule) => {
   cb(null, componentModule.default);
 };
 
-export default function createRoutes(store) {
+export default function createRoutes (store) {
   // Create reusable async injectors using getAsyncInjectors factory
   const { injectReducer, injectSagas } = getAsyncInjectors(store); // eslint-disable-line no-unused-vars
 
@@ -20,9 +20,9 @@ export default function createRoutes(store) {
     {
       path: '/',
       name: 'home',
-      getComponent(nextState, cb) {
+      getComponent (nextState, cb) {
         const importModules = Promise.all([
-          System.import('containers/HomePage'),
+          System.import('containers/HomePage')
         ]);
 
         const renderRoute = loadModule(cb);
@@ -32,15 +32,15 @@ export default function createRoutes(store) {
         });
 
         importModules.catch(errorLoading);
-      },
+      }
     }, {
       path: '/content',
       name: 'contentEditPage',
-      getComponent(nextState, cb) {
+      getComponent (nextState, cb) {
         const importModules = Promise.all([
           System.import('containers/ContentEditPage/reducer'),
           System.import('containers/ContentEditPage/sagas'),
-          System.import('containers/ContentEditPage'),
+          System.import('containers/ContentEditPage')
         ]);
 
         const renderRoute = loadModule(cb);
@@ -52,23 +52,23 @@ export default function createRoutes(store) {
         });
 
         importModules.catch(errorLoading);
-      },
+      }
     }, {
       path: 'components',
       name: 'componentsList',
-      getComponent(location, cb) {
+      getComponent (location, cb) {
         System.import('containers/ComponentsList')
           .then(loadModule(cb))
           .catch(errorLoading);
-      },
+      }
     }, {
       path: '*',
       name: 'notfound',
-      getComponent(nextState, cb) {
+      getComponent (nextState, cb) {
         System.import('containers/NotFoundPage')
           .then(loadModule(cb))
           .catch(errorLoading);
-      },
-    },
+      }
+    }
   ];
 }

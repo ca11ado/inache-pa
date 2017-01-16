@@ -15,7 +15,7 @@ const Wrapper = styled.div`
     flex-direction: column;
 `;
 
-function AppWrapper(props) {
+function AppWrapper (props) {
   return (
     <Wrapper>
       {props.children}
