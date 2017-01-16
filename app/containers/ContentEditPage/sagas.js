@@ -1,5 +1,5 @@
 import { takeEvery } from 'redux-saga';
-import { put, call } from 'redux-saga/effects';
+import { fork, put, call } from 'redux-saga/effects';
 import request from '../../utils/request';
 import {
   SELECT_MENU,
@@ -10,8 +10,8 @@ import {
 } from './constants';
 
 export function* selectMenuWatcherSaga () {
-  yield takeEvery(SELECT_MENU, startLoader);
-  yield takeEvery(SELECT_MENU, getContent);
+  yield fork(takeEvery, SELECT_MENU, startLoader);
+  yield fork(takeEvery, SELECT_MENU, getContent);
 }
 
 export function* contentLoadedWatcherSaga () {
