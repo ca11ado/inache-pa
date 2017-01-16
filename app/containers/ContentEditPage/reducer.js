@@ -7,7 +7,8 @@
 import { fromJS } from 'immutable';
 import {
   SELECT_MENU,
-  START_LOADER
+  START_LOADER,
+  STOP_LOADER
 } from './constants';
 
 export const initialState = fromJS({
@@ -36,6 +37,9 @@ function contentEditPageReducer(state = initialState, action) {
     }
     case START_LOADER: {
       return state.set('isLoaded', true);
+    }
+    case STOP_LOADER: {
+      return state.set('isLoaded', false);
     }
     default: {
       return state;

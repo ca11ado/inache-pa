@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import { selectSections } from './selectors';
 import SubMenu from '../../components/SubMenu';
 import { SELECT_MENU } from './constants';
-import Loader from '../../components/Loader';
+import Loader from '../../components/Loader2';
 
 export class ContentEditPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
