@@ -19,6 +19,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
     return (
       <div>
         <Link to="/content">Content edit page</Link><br />
+        <Link to="/components">Components list</Link><br />
         <h1>
           <FormattedMessage {...messages.header} />
         </h1>
