@@ -8,11 +8,15 @@ import { fromJS } from 'immutable';
 import {
   SELECT_MENU,
   START_LOADER,
-  STOP_LOADER
+  STOP_LOADER,
+  CONTENT_LOADED_SUCCESSEFULLY,
+  CONTENT_LOADED_UNSUCCESSEFULLY
 } from './constants';
 
 export const initialState = fromJS({
   isLoaded: false,
+  error: false,
+  content: [],
   sections: [
     { title: 'Новости', api: 'news', isActive: false },
     { title: 'Афиша', api: 'tours', isActive: false },
@@ -40,6 +44,12 @@ function contentEditPageReducer (state = initialState, action) {
     }
     case STOP_LOADER: {
       return state.set('isLoaded', false);
+    }
+    case CONTENT_LOADED_SUCCESSEFULLY: {
+      return state.set('content', action.content);
+    }
+    case CONTENT_LOADED_UNSUCCESSEFULLY: {
+      return state.set('error', true);
     }
     default: {
       return state;

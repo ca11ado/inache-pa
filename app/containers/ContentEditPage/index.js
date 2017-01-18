@@ -1,10 +1,13 @@
+import _ from 'lodash';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { selectSections } from './selectors';
+import { createStructuredSelector } from 'reselect';
+import { selectActiveSection, selectSections } from './selectors';
 import SubMenu from '../../components/SubMenu';
 import { SELECT_MENU } from './constants';
 import Loader from '../../components/Loader2';
+import EchoEditableContent from '../../components/EchoEditableContent';
 
 export class ContentEditPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render () {
@@ -19,8 +22,13 @@ export class ContentEditPage extends React.PureComponent { // eslint-disable-lin
 
     const content = this.props.isLoaded
       ? (<Loader />)
-      : (<div>Some content</div>);
+      : (
+        <EchoEditableContent 
+          content={this.props.content} 
+        />
+      );
 
+    //console.log(selectActiveSection(this.state));
     return (
       <div>
         <Helmet
