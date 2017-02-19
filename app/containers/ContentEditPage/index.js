@@ -19,7 +19,19 @@ export class ContentEditPage extends React.PureComponent { // eslint-disable-lin
 
     const content = this.props.isLoaded
       ? (<Loader />)
-      : (<div>Some content</div>);
+      : (
+        <ul>
+          {_.map(this.props.content, (item, index) => {
+            return (
+              <li key={`content-${index}`}>
+                <span>{item.date}</span>
+                <span> <b>{item.place}</b></span><br />
+                <span>{item.fullDescription}</span>
+              </li>
+            );
+          })}
+        </ul>
+      );
 
     return (
       <div>
@@ -43,7 +55,8 @@ export class ContentEditPage extends React.PureComponent { // eslint-disable-lin
 ContentEditPage.propTypes = {
   sections: PropTypes.array,
   isLoaded: PropTypes.bool,
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
+  content: PropTypes.array
 };
 
 const mapStateToProps = selectSections();
