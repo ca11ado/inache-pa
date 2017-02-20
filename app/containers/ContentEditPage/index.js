@@ -12,12 +12,12 @@ import Loader from '../../components/Loader2';
 const FORMAT = 'DD.MM.YYYY';
 
 const ListItemWrapper = styled.li`
-  margin-bottom: 12px;
+  margin: 0;
 `;
 
 const listItem = (item) => _.map(item, (property, key) => {
-  const result = property instanceof Array 
-    ? (<ul>ListItem(property, key)</ul>)
+  return (property instanceof Array) || (property instanceof Object)
+    ? (<ul key={`UlItem-${key}`}>{listItem(property)}</ul>)
     : (
         <ListItemWrapper key={`ListItem-${key}`}>
           <span><b>{key}:</b></span>
@@ -25,14 +25,6 @@ const listItem = (item) => _.map(item, (property, key) => {
         </ListItemWrapper>
       );
 });
-
-const ListItem = (props) => {
-  const content = _.map(props.content, (letter) => (<li>{letter}</li>));
-
-  return (
-    <ul>{content}</ul>
-  );
-};
 
 export class ContentEditPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render () {
@@ -47,8 +39,7 @@ export class ContentEditPage extends React.PureComponent { // eslint-disable-lin
 
     const content = this.props.isLoaded
       ? (<Loader />)
-    //: (<ListItem content={['t','e','s','t']} />);
-    : listItem(this.props.content);
+      : listItem(this.props.content);
 
     return (
       <div>
