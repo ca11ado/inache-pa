@@ -1,6 +1,3 @@
-import _ from 'lodash';
-import moment from 'moment';
-import styled from 'styled-components';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
@@ -9,8 +6,6 @@ import SubMenu from '../../components/SubMenu';
 import { SELECT_MENU } from './constants';
 import Loader from '../../components/Loader2';
 import ContentList from './contentList';
-
-const FORMAT = 'DD.MM.YYYY';
 
 export class ContentEditPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render () {

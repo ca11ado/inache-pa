@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import moment from 'moment';
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 
@@ -22,10 +21,10 @@ const listItem = (item) => _.map(item, (property, key) => {
   return isCollection
     ? (<ListWrapper key={`UlItem-${key}`}>{listItem(property)}</ListWrapper>)
     : (
-        <ListItemWrapper key={`ListItem-${key}`}>
-          <span><b>{key}: </b></span>
-          <span>{property}</span>
-        </ListItemWrapper>
+      <ListItemWrapper key={`ListItem-${key}`}>
+        <span><b>{key}: </b></span>
+        <span>{property}</span>
+      </ListItemWrapper>
       );
 });
 
@@ -36,6 +35,10 @@ const ContentList = (props) => {
   ));
 
   return (<div>{list}</div>);
+};
+
+ContentList.propTypes = {
+  content: PropTypes.array
 };
 
 export default ContentList;
