@@ -8,23 +8,9 @@ import { selectSections } from './selectors';
 import SubMenu from '../../components/SubMenu';
 import { SELECT_MENU } from './constants';
 import Loader from '../../components/Loader2';
+import ContentList from './contentList';
 
 const FORMAT = 'DD.MM.YYYY';
-
-const ListItemWrapper = styled.li`
-  margin: 0;
-`;
-
-const listItem = (item) => _.map(item, (property, key) => {
-  return (property instanceof Array) || (property instanceof Object)
-    ? (<ul key={`UlItem-${key}`}>{listItem(property)}</ul>)
-    : (
-        <ListItemWrapper key={`ListItem-${key}`}>
-          <span><b>{key}:</b></span>
-          <span>{property}</span>
-        </ListItemWrapper>
-      );
-});
 
 export class ContentEditPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render () {
@@ -39,7 +25,7 @@ export class ContentEditPage extends React.PureComponent { // eslint-disable-lin
 
     const content = this.props.isLoaded
       ? (<Loader />)
-      : listItem(this.props.content);
+      : (<ContentList content={this.props.content} />);
 
     return (
       <div>
