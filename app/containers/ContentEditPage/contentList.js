@@ -30,9 +30,11 @@ const listItem = (item) => _.map(item, (property, key) => {
 
 const ContentList = (props) => {
   const content = props.content;
-  const list = _.map(content, (contentItem, index) => (
-    <ItemWrapper key={`ItemWrapper-${index}`}>{listItem(contentItem)}</ItemWrapper>
-  ));
+  const list = content
+    ? _.map(content, (contentItem, index) => (
+      <ItemWrapper key={`ItemWrapper-${index}`}>{listItem(contentItem)}</ItemWrapper>
+    ))
+    : (<div><h2>There is nothing here</h2></div>);
 
   return (<div>{list}</div>);
 };

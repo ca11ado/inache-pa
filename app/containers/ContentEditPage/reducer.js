@@ -9,7 +9,8 @@ import {
   SELECT_MENU,
   START_LOADER,
   STOP_LOADER,
-  CONTENT_LOADED_SUCCESSEFULLY
+  CONTENT_LOADED_SUCCESSEFULLY,
+  CONTENT_LOADED_UNSUCCESSEFULLY
 } from './constants';
 
 export const initialState = fromJS({
@@ -44,6 +45,9 @@ function contentEditPageReducer (state = initialState, action) {
       return state.set('isLoaded', false);
     }
     case CONTENT_LOADED_SUCCESSEFULLY: {
+      return state.set('content', action.content);
+    }
+    case CONTENT_LOADED_UNSUCCESSEFULLY: {
       return state.set('content', action.content);
     }
     default: {

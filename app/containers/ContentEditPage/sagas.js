@@ -15,22 +15,17 @@ export function* selectMenuWatcherSaga () {
   yield fork(takeEvery, SELECT_MENU, getContent);
 }
 
-export function* contentLoadedWatcherSaga () {
-  yield takeEvery(CONTENT_LOADED_SUCCESSEFULLY, stopLoader);
-}
-
 export function* getContent () {
   const section = yield select(selectActiveSectionName());
   const requestURL = `http://127.0.0.1:3008/api/${section}`;
 
   try {
     const content = yield call(request, requestURL);
-    // yield put(reposLoaded(repos, username));
     yield put({ type: CONTENT_LOADED_SUCCESSEFULLY, content });
   } catch (err) {
-    // yield put(repoLoadingError(err));
     yield put({ type: CONTENT_LOADED_UNSUCCESSEFULLY });
   }
+  yield put({ type: STOP_LOADER });
 }
 
 export function* startLoader () {
@@ -43,6 +38,5 @@ export function* stopLoader () {
 
 // All sagas to be loaded
 export default [
-  selectMenuWatcherSaga,
-  contentLoadedWatcherSaga
+  selectMenuWatcherSaga
 ];
