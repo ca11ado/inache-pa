@@ -1,5 +1,6 @@
 import { takeEvery } from 'redux-saga';
-import { fork, put, call } from 'redux-saga/effects';
+import { select, fork, put, call } from 'redux-saga/effects';
+import { selectActiveSectionName } from './selectors';
 import request from '../../utils/request';
 import {
   SELECT_MENU,
@@ -19,8 +20,7 @@ export function* contentLoadedWatcherSaga () {
 }
 
 export function* getContent () {
-  // const username = yield select(selectUsername());
-  const section = 'tours';
+  const section = yield select(selectActiveSectionName());
   const requestURL = `http://127.0.0.1:3008/api/${section}`;
 
   try {
