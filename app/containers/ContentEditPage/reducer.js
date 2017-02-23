@@ -8,7 +8,9 @@ import { fromJS } from 'immutable';
 import {
   SELECT_MENU,
   START_LOADER,
-  STOP_LOADER
+  STOP_LOADER,
+  CONTENT_LOADED_SUCCESSEFULLY,
+  CONTENT_LOADED_UNSUCCESSEFULLY
 } from './constants';
 
 export const initialState = fromJS({
@@ -19,7 +21,8 @@ export const initialState = fromJS({
     { title: 'Видео', api: 'video', isActive: false },
     { title: 'Фото', api: 'gallery', isActive: false },
     { title: 'Музыка', api: 'music', isActive: false }
-  ]
+  ],
+  content: []
 });
 
 function contentEditPageReducer (state = initialState, action) {
@@ -40,6 +43,12 @@ function contentEditPageReducer (state = initialState, action) {
     }
     case STOP_LOADER: {
       return state.set('isLoaded', false);
+    }
+    case CONTENT_LOADED_SUCCESSEFULLY: {
+      return state.set('content', action.content);
+    }
+    case CONTENT_LOADED_UNSUCCESSEFULLY: {
+      return state.set('content', action.content);
     }
     default: {
       return state;

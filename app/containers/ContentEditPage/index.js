@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { selectSections } from './selectors';
+import { selectContentEditState } from './selectors';
 import SubMenu from '../../components/SubMenu';
 import { SELECT_MENU } from './constants';
 import Loader from '../../components/Loader2';
+import ContentList from './contentList';
 
 export class ContentEditPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render () {
@@ -19,7 +20,7 @@ export class ContentEditPage extends React.PureComponent { // eslint-disable-lin
 
     const content = this.props.isLoaded
       ? (<Loader />)
-      : (<div>Some content</div>);
+      : (<ContentList content={this.props.content} />);
 
     return (
       <div>
@@ -43,10 +44,11 @@ export class ContentEditPage extends React.PureComponent { // eslint-disable-lin
 ContentEditPage.propTypes = {
   sections: PropTypes.array,
   isLoaded: PropTypes.bool,
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
+  content: PropTypes.array
 };
 
-const mapStateToProps = selectSections();
+const mapStateToProps = selectContentEditState();
 
 function mapDispatchToProps (dispatch) {
   return {

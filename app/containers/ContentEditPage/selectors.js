@@ -5,15 +5,25 @@ import { createSelector } from 'reselect';
  */
 const selectContentEditPageDomain = () => (state) => state.get('contentEditPage');
 
-/**
- * Other specific selectors
- */
-const selectSections = () => createSelector(
+const selectContentEditState = () => createSelector(
   selectContentEditPageDomain(),
-  (contentState) => contentState.get('sections'),
-  (sections) => sections.toJS()
+  (contentState) => contentState.toJS()
 );
 
+const selectSections = () => createSelector(
+  selectContentEditPageDomain(),
+  (contentState) => contentState.get('sections')
+);
+
+const selectActiveSection = () => createSelector(
+  selectSections(),
+  (sections) => sections.get(sections.findIndex((section) => section.get('isActive')))
+);
+
+const selectActiveSectionName = () => createSelector(
+  selectActiveSection(),
+  (section) => section.get('api')
+);
 
 /**
  * Default selector used by ContentEditPage
@@ -21,5 +31,8 @@ const selectSections = () => createSelector(
 
 export {
   selectContentEditPageDomain,
-  selectSections
+  selectContentEditState,
+  selectSections,
+  selectActiveSection,
+  selectActiveSectionName
 };
