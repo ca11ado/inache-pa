@@ -4,10 +4,14 @@ import styled from 'styled-components';
 
 const ItemWrapper = styled.div`
   margin-top: 20px;
+  border: 1px solid black;
+  padding: 2px 6px;
+  box-shadow: 1px 1px 5px #807f7f;
 `;
 
 const ListWrapper = styled.ul`
   margin: 0;
+  padding: 0 0 0 16px;
 `;
 
 const ListItemWrapper = styled.li`
