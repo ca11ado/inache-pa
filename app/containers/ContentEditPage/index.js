@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { selectSections } from './selectors';
+import { selectContentEditState } from './selectors';
 import SubMenu from '../../components/SubMenu';
 import { SELECT_MENU } from './constants';
 import Loader from '../../components/Loader2';
@@ -48,7 +48,7 @@ ContentEditPage.propTypes = {
   content: PropTypes.array
 };
 
-const mapStateToProps = selectSections();
+const mapStateToProps = selectContentEditState();
 
 function mapDispatchToProps (dispatch) {
   return {

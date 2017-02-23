@@ -5,21 +5,18 @@ import { createSelector } from 'reselect';
  */
 const selectContentEditPageDomain = () => (state) => state.get('contentEditPage');
 
-/**
- * Other specific selectors //todo wrong name
- */
-const selectSections = () => createSelector(
+const selectContentEditState = () => createSelector(
   selectContentEditPageDomain(),
   (contentState) => contentState.toJS()
 );
 
-const selectTrueSections = () => createSelector(
+const selectSections = () => createSelector(
   selectContentEditPageDomain(),
   (contentState) => contentState.get('sections')
 );
 
 const selectActiveSection = () => createSelector(
-  selectTrueSections(),
+  selectSections(),
   (sections) => sections.get(sections.findIndex((section) => section.get('isActive')))
 );
 
@@ -34,6 +31,8 @@ const selectActiveSectionName = () => createSelector(
 
 export {
   selectContentEditPageDomain,
+  selectContentEditState,
   selectSections,
+  selectActiveSection,
   selectActiveSectionName
 };
